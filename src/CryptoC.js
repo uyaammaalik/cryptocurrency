@@ -19,7 +19,7 @@ function CryptoC() {
         if (crypto === "") {
             swal("Field Empty", "Please enter valid Crypto Currency Name", "error")
         } else {
-            const url = "https://api.coingecko.com/api/v3/coins/" + crypto
+            const url = "https://api.coingecko.com/api/v3/coins/" + crypto.toLowerCase()
             axios.get(url)
                 .then(res => {
                     let resData = res.data
@@ -36,10 +36,10 @@ function CryptoC() {
                     setDesc(JSON.stringify(resData.description.en))
                 })
                 .catch((error) => {
-					console.log("Error: ", error)
-					swal("Invalid Name", "Please enter valid Crypto Currency Name", "error")
-				}
-				)
+                    console.log("Error: ", error)
+                    swal("Invalid Name", "Please enter valid Crypto Currency Name", "error")
+                }
+                )
         }
 
 
@@ -60,9 +60,9 @@ function CryptoC() {
                 </div>
             </nav>
 
-            <div className="container mt-4 justify-content-center">
+            <div className="container mt-4">
                 <div className="row">
-                    <div className="col-5 mx-auto">
+                    <div className="col-md-6 col-lg-6 col-xl-6 mx-auto">
                         <input type={"text"} value={crypto} placeholder="Enter Crypto Currency" onChange={(e) => setCrypto(e.target.value)} className="form-control" />
                         <button onClick={handleClick} className="btn btn-primary mt-3">Search</button>
                     </div>
@@ -72,7 +72,7 @@ function CryptoC() {
 
             <div className="container-fluid mt-5">
                 <div className="row">
-                    <div className="col-4 text-center">
+                    <div className="col-md-6 col-lg-4 col-xl-4 text-center">
                         <img src={img} width="150" alt="" />
 
                         <div className="h1 text-white" >{name}</div>
@@ -85,7 +85,7 @@ function CryptoC() {
 
                         <div className="h4 text-white">{usd}</div>
                     </div>
-                    <div className="col-8 my-auto">
+                    <div className="col-md-6 col-lg-8 col-xl-8 my-auto">
                         <div className="fs-6 pe-5">
                             <div dangerouslySetInnerHTML={createMarkup()}></div>
                         </div>
